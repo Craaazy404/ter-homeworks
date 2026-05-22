@@ -1,7 +1,25 @@
 terramate {
   config {
+    disable_safeguards = ["git-untracked", "git-uncommitted"]
+    git {
+      default_branch = "main"
+    }
+    run {
+      env {
+        TF_PLUGIN_CACHE_DIR = "${terramate.root.path.fs.absolute}/.terraform-cache-dir"
+      }
+    }
+    experiments = [
+      "scripts"
+    ]
   }
 }
+
+
+
+
+
+
 
 globals {
   # Общие настройки Yandex Cloud для всех окружений
